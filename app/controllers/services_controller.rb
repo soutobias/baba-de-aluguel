@@ -3,15 +3,15 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
+    authorize @service
   end
 
   def create
-    @babysitter = Babysitter.find(params[:babysitter_id])
-    @user = current_user
     @service = Service.new(service_params)
-    @service.user = @user
-    @service.babysitter = @babysitter
+    @service.user = current_user
+    @service.babysitter = Babysitter.find(params[:babysitter_id])
     redirect_to service_path(@service)
+    authorize @service
   end
 
   def destroy
