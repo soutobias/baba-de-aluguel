@@ -1,0 +1,11 @@
+<h1>Babysitters List</h1>
+<% @babysitters.each do |babysitter| %>
+  <div>
+    <p>Nome: <%=babysitter.user.name%></p>
+    <p>Habilidade: <%=babysitter.skill%></p>
+    <p>Tempo de experiencia: <%=babysitter.experience%></p>
+    <p>Regiao: <%=babysitter.user.location%></p>
+  </div>
+<% end %>
+<%= link_to "Back to dashboard", dashboard_path%>
+<!-- link to be updated -->

@@ -1,0 +1,13 @@
+<h1><%=@babysitter.user.name%></h1>
+  <div>
+    <p>Habilidade: <%=@babysitter.skill%></p>
+    <p>Tempo de experiencia: <%=@babysitter.experience%></p>
+    <p>Regiao: <%=@babysitter.user.location%></p>
+    <br>
+    <!-- <p>Data de inicio: <%=@service.user.start_date%></p>
+    <p>Data de termino: <%=@service.user.end_date%></p>
+    <p>Duracao: <%=@service.user.duration%></p> -->
+    <!-- ADD FORM -->
+  </div>
+<%= link_to "Agendar servico", service_path(@babysitter)%>
+<%= link_to "Voltar", babysitters_path%>
