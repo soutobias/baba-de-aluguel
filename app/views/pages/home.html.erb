@@ -9,21 +9,33 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Encontre trabalho</h5>
         <p class="card-text">Veja vagas perto de você e fale com interessado.</p>
-        <%= link_to "Procurar", babysitters_path, class: "btn"  %>
+        <%= link_to "Procurar", babysitters_path, class: "btn" %>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Contratar profissionais</h5>
         <p class="card-text">Veja profissionais qualificados perto de você e agende uma entrevista.</p>
-        <%= link_to "Procurar", filter_path, class: "btn"  %>
+        <%= link_to "Procurar", filter_path, class: "btn" %>
       </div>
     </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Histórico</h5>
+        <p class="card-text">Veja seus agendamentos.</p>
+        <%= link_to "Entre", services_path, class: "btn" %>
+      </div>
+    </div>
+  </div>
 </div>
+
+
