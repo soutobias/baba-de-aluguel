@@ -3,14 +3,25 @@
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
 </div>
-<h1>Lista de Babysitters</h1>
-<div>
-  <% @babysitters.each do |babysitter| %>
-    <p>Nome: <%=link_to babysitter.user.name, babysitter_path%></p>
-    <p>Habilidade: <%=babysitter.skill%></p>
-    <p>Tempo de experiencia: <%=babysitter.experience%></p>
-    <p>CEP: <%=babysitter.user.location%></p>
-  <% end %>
+
+<div class="container pb-3">
+  <h1 class="font-weight-bold text-center p-3 h1">Escolha sua babá</h1>
+  <div class="row marging justify-content-md-center">
+    <% @babysitters.each do |babysitter| %>
+      <div class="col-12 col-lg-4">
+        <%= link_to babysitter_path(babysitter) do %>
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos">
+              <p>Nome: <%=babysitter.user.email%></p>
+              <p>Habilidade: <%=babysitter.skill%></p>
+              <p>Tempo de experiencia: <%=babysitter.experience%></p>
+              <p>CEP: <%=babysitter.price%></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to "Fazer busca novamento", filter_path%>
+  </div>
 </div>
-<br>
-<%= link_to "Voltar para o Dashboard", dashboard_path%>
