@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+  <div class="container text-center justify-content-center align-middle">
+    <h1 class="font-weight-bold">Baba de Aluguel</h1>
+  </div>
+</div>
+<h1><%=@babysitter.user.name%></h1>
+<div>
+  <p>Habilidade: <%=@babysitter.skill%></p>
+  <p>Tempo de experiencia: <%=@babysitter.experience%></p>
+  <p>Habilidade: <%=@babysitter.skill%></p>
+  <p>Preco: <%=@babysitter.price%></p>
+  <p>CEP: <%=@babysitter.user.location%></p>
+</div>
+<br>
+<div>
+  <p>Agendamento</p>
+  <%= simple_form_for [ @babysitter, @service ] do |f| %>
+    <%= f.input :start_date, label: 'Data de inicio:' %>
+    <%= f.input :end_date, label: 'Data de termino:' %>
+    <%= f.input :duration, label: 'Duracao:' %>
+    <%= f.button :submit, label: 'Agendar servico', class: "btn btn-primary"%>
+  <% end %>
+</div>
+<br>
+<%= link_to "Voltar para a Lista de Babysitters", babysitters_path%>
