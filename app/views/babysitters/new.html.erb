@@ -3,14 +3,19 @@
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
 </div>
-<h1>Cadastrar Babysitter</h1>
-<div>
-  <%= simple_form_for @babysitter do |f| %>
-    <%= f.input :skill, label: 'Habilidade:' %>
-    <%= f.input :experience, label: 'Tempo de experiencia:' %>
-    <%= f.input :price, label: 'Preco:' %>
-    <%= f.button :submit, class: "btn btn-primary"%>
-  <% end %>
+<div class="container w-100 justify-content-center margin-top-negative">
+  <div class="d-flex justify-content-between">
+    <div class="m-3 show-left flex-grow-1">
+      <h1>Cadastrar Babysitter</h1>
+      <div>
+        <%= simple_form_for @babysitter do |f| %>
+          <%= f.input :skill, label: 'Habilidade:' %>
+          <%= f.input :experience, label: 'Tempo de experiência:' %>
+          <%= f.input :price, label: 'Preço:' %>
+          <%= f.button :submit, class: "btn btn-primary"%>
+          <%= link_to "Voltar", root_path, class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<%= link_to "Voltar para a Lista de Babysitters", babysitters_path%>

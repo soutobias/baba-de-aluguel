@@ -1,6 +1,12 @@
 class BabysittersController < ApplicationController
   before_action :set_babysitter, only: [:show, :edit, :update, :destroy]
 
+  def index
+    # @babysitters = Babysitter.new
+    # authorize @babysitter
+    @babysitters = policy_scope(Babysitter)
+  end
+
   def new
     @babysitter = Babysitter.new
     authorize @babysitter

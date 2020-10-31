@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   devise_for :views
   devise_for :users
   root to: "pages#home"
-  get "profile", to: "dashboard#profile"
+  get "filter", to: "pages#filter"
   resources :babysitters do
-    resources :services, only: [ :new, :create ]
+    resources :services, only: [ :new, :create]
+    get "babysitters/:id/services", to: "services#index_babysitters"
   end
-  resources :services, only: [ :destroy ]
+  resources :services, only: [ :destroy]
+  get "services", to: "services#index_user"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
