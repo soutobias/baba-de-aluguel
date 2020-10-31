@@ -14,7 +14,7 @@
 </ul>
 
 <div class="m-3">
-  <% @user.services.each do |service| %>
+  <% current_user.services.each do |service| %>
     <p><%= service.babysitter.user.name %> </p>
     <p><%= service.begin_date %> </p>
     <p><%= service.end_date %> </p>

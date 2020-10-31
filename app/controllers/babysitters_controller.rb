@@ -5,8 +5,6 @@ class BabysittersController < ApplicationController
     # @babysitters = Babysitter.new
     # authorize @babysitter
     @babysitters = policy_scope(Babysitter)
-
-
   end
 
   def new

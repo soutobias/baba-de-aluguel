@@ -1,16 +1,12 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:destroy]
 
-  def new
-    @service = Service.new
-    authorize @service
-  end
-
   def create
     @service = Service.new(service_params)
     @service.user = current_user
     @service.babysitter = Babysitter.find(params[:babysitter_id])
-    redirect_to service_path(@service)
+    @user = current_user
+    redirect_to services_path
     authorize @service
   end
 
