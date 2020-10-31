@@ -14,10 +14,10 @@
 </ul>
 <div class="m-3">
   <% current_user.services.each do |service| %>
-    <p><%= service.babysitter.user.name %> </p>
-    <p><%= service.start_date %> </p>
-    <p><%= service.end_date %> </p>
-    <p><%= service.duration %> </p>
+    <p>Email da babysitter: <%= service.babysitter.user.email %> </p>
+    <p>Início do Serviço: <%= service.start_date %> </p>
+    <p>Término do Serviço: <%= service.end_date %> </p>
+    <p>Duração: <%= service.duration %> </p>
   <% end %>
 </div>
 
