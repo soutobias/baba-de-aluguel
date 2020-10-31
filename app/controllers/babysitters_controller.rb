@@ -44,4 +44,9 @@ class BabysittersController < ApplicationController
   def babysitter_params
     params.require(:babysitter).permit(:experience, :skill, :price)
   end
+
+  def article_params
+    params.require(:babysitter).permit(:title, :body, :photo)
+  end
+
 end
