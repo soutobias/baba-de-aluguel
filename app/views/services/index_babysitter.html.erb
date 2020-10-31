@@ -1,0 +1,21 @@
+<div class="banner">
+  <h1>My Services</h1>
+</div>
+
+<ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#" class="tab-underlined active">My Babysitters</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">My Jobs</a>
+  </li>
+</ul>
+
+<div class="m-3">
+  <% @babysitter.services.each do |service| %>
+    <p><%= service.user.name %> </p>
+    <p><%= service.begin_date %> </p>
+    <p><%= service.end_date %> </p>
+    <p><%= service.duration %> </p>
+  <% end %>
+</div>

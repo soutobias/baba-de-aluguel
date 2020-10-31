@@ -1,0 +1,26 @@
+<div class="banner">
+    <div class="container text-center justify-content-center align-middle">
+      <h1 class="font-weight-bold"><span id="banner-typed-text"></span> Baba de Aluguel</h1>
+      <%= image_tag "baby.webp", class: "img-large"%>
+    </div>
+</div>
+
+<ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#" class="tab-underlined active">My Babysitters</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">My Jobs</a>
+  </li>
+</ul>
+
+<div class="m-3">
+  <% @user.services.each do |service| %>
+    <p><%= service.babysitter.user.name %> </p>
+    <p><%= service.begin_date %> </p>
+    <p><%= service.end_date %> </p>
+    <p><%= service.duration %> </p>
+  <% end %>
+</div>
+
+
