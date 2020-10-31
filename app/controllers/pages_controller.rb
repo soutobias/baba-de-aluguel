@@ -6,4 +6,5 @@ class PagesController < ApplicationController
   def filter
     @babysitter = Babysitter.new
   end
+
 end
