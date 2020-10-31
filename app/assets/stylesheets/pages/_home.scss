@@ -4,11 +4,24 @@ h1, h2, p{
   font-family: 'Patrick Hand', cursive;
 }
 
-.container {
+.first {
   padding: 50px;
   height: 100px;
 }
 
 .title {
   text-align: center;
+}
+
+.home-banner {
+
+}
+
+.btn {
+  background-color: #C8A9A9;
+  border-radius: 20px;
+  width: 121px;
+  height: 45px;
+  text-align: center;
+  font-size: 18px;
 }

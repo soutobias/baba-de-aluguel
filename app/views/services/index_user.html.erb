@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+  <div class="container text-center justify-content-center align-middle">
+    <h1 class="font-weight-bold">Baba de Aluguel</h1>
+  </div>
+</div>
+
+<ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#" class="tab-underlined active">My Babysitters</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">My Jobs</a>
+  </li>
+</ul>
+
+<div class="m-3">
+  <% @user.services.each do |service| %>
+    <p><%= service.babysitter.user.name %> </p>
+    <p><%= service.begin_date %> </p>
+    <p><%= service.end_date %> </p>
+    <p><%= service.duration %> </p>
+  <% end %>
+</div>
+
+
