@@ -4,4 +4,24 @@ class BabysitterPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def new?
+    true
+  end
+
+  def create?
+    new?
+  end
+
+  def edit?
+    true
+  end
+
+  def update?
+    edit?
+  end
+
+  def show?
+    true
+  end
 end

@@ -9,6 +9,7 @@ class BabysittersController < ApplicationController
   def create
     @babysitter = Babysitter.new(babysitter_params)
     authorize @babysitter
+    @babysitter.user = current_user
     if @babysitter.save
       redirect_to babysitter_path(@babysitter)
     else
@@ -41,6 +42,6 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_params
-    params.require(:babysitter).permit(:experience, :price)
+    params.require(:babysitter).permit(:experience, :skill, :price)
   end
 end
