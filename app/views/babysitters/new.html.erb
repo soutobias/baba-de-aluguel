@@ -1,1 +1,12 @@
-new.html.erb
+<h1>Cadastrar Babysitter</h1>
+<div>
+  <%= simple_form_for @babysitter do |f| %>
+    <%= f.input :name, label: 'Nome:' %>
+    <%= f.input :skill, label: 'Habilidade:' %>
+    <%= f.input :experience, label: 'Tempo de experiencia:' %>
+    <%= f.input :location, label: 'CEP:' %>
+    <%= f.button :submit, class: "btn btn-primary"%>
+  <% end %>
+</div>
+<br>
+<%= link_to "Voltar para a Lista de Babysitters", babysitters_path%>

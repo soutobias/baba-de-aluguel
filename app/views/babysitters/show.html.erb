@@ -1,13 +1,19 @@
 <h1><%=@babysitter.user.name%></h1>
-  <div>
-    <p>Habilidade: <%=@babysitter.skill%></p>
-    <p>Tempo de experiencia: <%=@babysitter.experience%></p>
-    <p>Regiao: <%=@babysitter.user.location%></p>
-    <br>
-    <!-- <p>Data de inicio: <%=@service.user.start_date%></p>
-    <p>Data de termino: <%=@service.user.end_date%></p>
-    <p>Duracao: <%=@service.user.duration%></p> -->
-    <!-- ADD FORM -->
-  </div>
-<%= link_to "Agendar servico", service_path(@babysitter)%>
-<%= link_to "Voltar", babysitters_path%>
+<div>
+  <p>Habilidade: <%=@babysitter.skill%></p>
+  <p>Tempo de experiencia: <%=@babysitter.experience%></p>
+  <p>CEP: <%=@babysitter.user.location%></p>
+</div>
+<br>
+<div>
+  <p>Agendamento</p>
+  <%= simple_form_for @service do |f| %>
+    <%= f.input :start_date, label: 'Data de inicio:' %>
+    <%= f.input :end_date, label: 'Data de termino:' %>
+    <%= f.input :duration, label: 'Duracao:' %>
+    <%= f.button :submit, class: "btn btn-primary"%>
+  <% end %>
+  <%= link_to "Agendar servico", service_path(@babysitter), class: "btn btn-primary"%>
+</div>
+<br>
+<%= link_to "Voltar para a Lista de Babysitters", babysitters_path%>
