@@ -5,9 +5,15 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     @service.user = current_user
     @service.babysitter = Babysitter.find(params[:babysitter_id])
-    @user = current_user
-    redirect_to services_path
+    @service.save
+    render :index_user
     authorize @service
+  end
+
+  def index_user
+  end
+
+  def index_babysitter
   end
 
   def destroy
