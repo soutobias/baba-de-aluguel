@@ -1,10 +1,14 @@
+<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+  <div class="container text-center justify-content-center align-middle">
+    <h1 class="font-weight-bold">Baba de Aluguel</h1>
+  </div>
+</div>
 <h1>Editar Babysitter</h1>
 <div>
   <%= simple_form_for @babysitter do |f| %>
-    <%= f.input :name, label: 'Nome:' %>
     <%= f.input :skill, label: 'Habilidade:' %>
     <%= f.input :experience, label: 'Tempo de experiencia:' %>
-    <%= f.input :location, label: 'CEP:' %>
+    <%= f.input :price, label: 'Preco:' %>
     <%= f.button :submit, class: "btn btn-primary"%>
   <% end %>
 </div>
