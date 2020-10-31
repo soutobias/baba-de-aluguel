@@ -33,6 +33,9 @@ gem 'devise'
 # Pundit
 gem 'pundit'
 
+# use the dotenv gem for security
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
