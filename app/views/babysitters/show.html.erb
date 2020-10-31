@@ -3,23 +3,30 @@
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
 </div>
-<h1><%=@babysitter.user.name%></h1>
-<div>
-  <p>Habilidade: <%=@babysitter.skill%></p>
-  <p>Tempo de experiencia: <%=@babysitter.experience%></p>
-  <p>Habilidade: <%=@babysitter.skill%></p>
-  <p>Preco: <%=@babysitter.price%></p>
-  <p>CEP: <%=@babysitter.user.location%></p>
+<div class="container w-100 justify-content-center margin-top-negative">
+  <div class="d-flex justify-content-between">
+    <div class="m-3 show-left flex-grow-1">
+      <div class="card-border p-3 h-100">
+        <h3><%=@babysitter.user.name%></h3>
+        <div>
+          <p>Habilidade: <%=@babysitter.skill%></p>
+          <p>Tempo de experiencia: <%=@babysitter.experience%></p>
+          <p>Habilidade: <%=@babysitter.skill%></p>
+          <p>Preco: <%=@babysitter.price%></p>
+          <p>CEP: <%=@babysitter.user.location%></p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3>Agendamento</h3>
+      <%= simple_form_for [ @babysitter, @service ] do |f| %>
+        <%= f.input :start_date, label: 'Data de início:' %>
+        <%= f.input :end_date, label: 'Data de término:' %>
+        <%= f.input :duration, label: 'Duração:' %>
+        <%= f.button :submit, label: 'Agendar serviço', class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
 </div>
-<br>
-<div>
-  <p>Agendamento</p>
-  <%= simple_form_for [ @babysitter, @service ] do |f| %>
-    <%= f.input :start_date, label: 'Data de inicio:' %>
-    <%= f.input :end_date, label: 'Data de termino:' %>
-    <%= f.input :duration, label: 'Duracao:' %>
-    <%= f.button :submit, label: 'Agendar servico', class: "btn btn-primary"%>
-  <% end %>
-</div>
-<br>
+
 <%= link_to "Voltar para a Lista de Babysitters", babysitters_path%>
