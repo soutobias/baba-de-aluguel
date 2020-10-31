@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "profile", to: "dashboard#profile"
-  resources :babysitters, only: [ :new, :create, :show, :edit, :update, :destroy ] do
+  resources :babysitters do
     resources :services, only: [ :new, :create ]
   end
   resources :services, only: [ :destroy ]

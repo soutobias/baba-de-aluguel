@@ -17,6 +17,7 @@ class BabysittersController < ApplicationController
   end
 
   def show
+    @service = Service.new
   end
 
   def edit
