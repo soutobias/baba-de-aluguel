@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :views
   devise_for :users
   root to: "pages#home"
-  get "profile", to: "dashboard#profile"
+  get "filter", to: "pages#filter"
   resources :babysitters do
     resources :services, only: [ :new, :create ]
   end
