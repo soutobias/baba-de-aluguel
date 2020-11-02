@@ -12,16 +12,15 @@
           <p>Habilidade: <%=@babysitter.skill%></p>
           <p>Tempo de experiencia: <%=@babysitter.experience%></p>
           <p>Preco: <%=@babysitter.price%></p>
-          <p>CEP: <%=@babysitter.user.location%></p>
+          <p>Local de trabalho: <%=@babysitter.user.location%></p>
         </div>
       </div>
     </div>
     <div>
       <h3>Agendamento</h3>
       <%= simple_form_for [ @babysitter, @service ] do |f| %>
-        <%= f.input :start_date, label: 'Data de início:' %>
-        <%= f.input :end_date, label: 'Data de término:' %>
-        <%= f.input :duration, label: 'Duração:' %>
+        <%= f.input :date_time, as: :date_time %>
+        <%= f.input :duration, label: 'Duração em horas:' %>
         <%= f.button :submit, label: 'Agendar serviço', class: "btn btn-primary"%>
       <% end %>
     </div>

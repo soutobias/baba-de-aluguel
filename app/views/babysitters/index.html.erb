@@ -10,9 +10,9 @@
       <div class="col-12 col-lg-4">
         <%= link_to babysitter_path(babysitter) do %>
           <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <%= cl_image_tag babysitter.user.photo.key %>
             <div class="card-trip-infos">
-              <p>Nome: <%=babysitter.user.email%></p>
+              <p>Nome: <%=babysitter.user.name%></p>
               <p>Habilidade: <%=babysitter.skill%></p>
               <p>Tempo de experiencia: <%=babysitter.experience%></p>
               <p>Price: <%=babysitter.price%></p>

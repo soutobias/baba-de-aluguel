@@ -15,7 +15,7 @@
           <%= link_to "Messages", "#", class: "nav-link login-btn" %>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://avatars2.githubusercontent.com/u/39573110?s=400&u=5eb905f84111c8de21a760f725fa6d09d8fba569&v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
