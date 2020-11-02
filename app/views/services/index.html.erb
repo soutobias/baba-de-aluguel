@@ -3,7 +3,6 @@
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
 </div>
-
 <ul class="list-inline tabs-underlined">
   <li>
     <a href="#" class="tab-underlined active">My Babysitters</a>
@@ -13,7 +12,7 @@
   </li>
 </ul>
 <div class="m-3">
-  <% current_user.services.each do |service| %>
+  <% @services.each do |service| %>
     <p>Email da babysitter: <%= service.babysitter.user.email %> </p>
     <p>Início do Serviço: <%= service.start_date %> </p>
     <p>Término do Serviço: <%= service.end_date %> </p>
