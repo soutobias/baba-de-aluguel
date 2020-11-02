@@ -19,7 +19,7 @@
     <div>
       <h3>Agendamento</h3>
       <%= simple_form_for [ @babysitter, @service ] do |f| %>
-        <%= f.input :date_time, as: :date_time %>
+        <%= f.input :date_time %>
         <%= f.input :duration, label: 'Duração em horas:' %>
         <%= f.button :submit, label: 'Agendar serviço', class: "btn btn-primary"%>
       <% end %>
