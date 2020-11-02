@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_004522) do
+ActiveRecord::Schema.define(version: 2020_11_02_014407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_004522) do
   end
 
   create_table "babysitters", force: :cascade do |t|
-    t.text "experience"
+    t.integer "experience"
     t.decimal "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(version: 2020_10_30_004522) do
   create_table "services", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "babysitter_id", null: false
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "date_time"
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "total_price"
     t.index ["babysitter_id"], name: "index_services_on_babysitter_id"
     t.index ["user_id"], name: "index_services_on_user_id"
   end

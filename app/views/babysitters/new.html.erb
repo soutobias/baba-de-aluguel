@@ -9,9 +9,9 @@
       <h1>Cadastrar Babysitter</h1>
       <div>
         <%= simple_form_for @babysitter do |f| %>
-          <%= f.input :skill, label: 'Habilidade:' %>
+          <%= f.input :skill, label: 'Habilidade:', collection: %w(cozinhar limpar ensinar brincar) %>
           <%= f.input :experience, label: 'Tempo de experiência:' %>
-          <%= f.input :price, label: 'Preço:' %>
+          <%= f.input :price, label: 'Preço por hora:' %>
           <%= f.button :submit, "Criar", class: "btn btn-primary"%>
           <%= link_to "Voltar", root_path, class: "btn btn-primary"%>
         <% end %>
