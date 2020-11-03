@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :services, only: [ :new, :create]
     get "babysitters/:id/services", to: "services#index_babysitters"
   end
-  resources :services, only: [ :destroy]
-  get "services", to: "services#index_user"
+  resources :services, only: [ :destroy, :index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

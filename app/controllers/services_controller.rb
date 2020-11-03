@@ -10,7 +10,8 @@ class ServicesController < ApplicationController
     authorize @service
   end
 
-  def index_user
+  def index
+    @services = policy_scope(Service).where(user: :current_user)
   end
 
   def index_babysitter

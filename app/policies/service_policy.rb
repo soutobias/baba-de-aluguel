@@ -13,11 +13,4 @@ class ServicePolicy < ApplicationPolicy
     new?
   end
 
-  def index_user?
-    true
-  end
-
-  def index_babysitter?
-    true
-  end
 end
