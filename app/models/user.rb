@@ -3,6 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_one_attached :photo
+  has_one_attached :photo, dependent: :destroy
   has_many :services
+  has_one :babysitter
+  has_many :babysitters, through: :services
+  validates :email, presence: true
+  validates :name, presence: true
+  validates :location, presence: true
+
+  def profile_picture
+    photo.key
+  end
 end
