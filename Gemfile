@@ -30,7 +30,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'faker'
 # Devise do user
 gem 'devise'
-
+gem 'turbolinks_render'
 # Pundit
 gem 'pundit'
 gem 'activestorage-validator'

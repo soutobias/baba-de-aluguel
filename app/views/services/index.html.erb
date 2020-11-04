@@ -5,15 +5,15 @@
 </div>
 <ul class="list-inline tabs-underlined">
   <li>
-    <%= link_to "Minhas babás", services_path%>
+    <p id="tab1">"Minhas babás"</p>
   </li>
   <li>
-    <!-- <%= link_to "Meus serviços",  babysitter_babysitter_services_path%> -->
+    <p id="tab2">"Meus Serviços"</p>
   </li>
 </ul>
 
 <div class="container pb-3">Serviços agendados</h1>
-  <div class="row marging justify-content-between">
+  <div class="row marging justify-content-between" id="my_babysitters">
     <% @services.each do |service| %>
       <div class="col-12 col-lg-4">
         <%= link_to babysitter_path(service.babysitter) do %>
@@ -31,4 +31,20 @@
     <% end %>
   </div>
   <%= link_to "Agendar mais serviços", filter_path%>
+  <% if current_user.babysitter? %>
+    <div class="row marging justify-content-between" id="my_services" type="hidden">
+      <% @services.current_user.each do |service| %>
+        <div class="col-12 col-lg-4">
+          <div class="card-trip">
+            <div class="card-trip-infos">
+              <p>Nome: <%=service.user.name%></p>
+              <p>Dia e hora do Serviço: <%= service.date_time %> </p>
+              <p>Duração em horas: <%= service.duration %> </p>
+              <p>Preço total: <%=service.total_price%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
