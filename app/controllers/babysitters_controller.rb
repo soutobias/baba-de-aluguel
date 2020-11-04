@@ -22,6 +22,12 @@ class BabysittersController < ApplicationController
     else
       @babysitters = policy_scope(Babysitter).order(created_at: :desc)
     end
+    @markers = @babysitters.map do |babysitter|
+      {
+        lng: babysitter.user.longitude,
+        lat: babysitter.user.latitude
+      }
+    end
   end
 
   def new
