@@ -2,9 +2,14 @@ class BabysittersController < ApplicationController
   before_action :set_babysitter, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @babysitters = Babysitter.new
-    # authorize @babysitter
-    @babysitters = policy_scope(Babysitter)
+    @babysitters = policy_scope(Babysitter).where.not(latitude: nil, longitude: nil)
+    # @babysitters = Babysitter.where.not(latitude: nil, longitude: nil)
+    @markers = @babysitters.map do |babysitter|
+      {
+        lng: babysitter.user.longitude,
+        lat: babysitter.user.latitude
+      }
+    end
   end
 
   def new
