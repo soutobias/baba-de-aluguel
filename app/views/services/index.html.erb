@@ -5,19 +5,30 @@
 </div>
 <ul class="list-inline tabs-underlined">
   <li>
-    <a href="#" class="tab-underlined active">My Babysitters</a>
+    <%= link_to "Minhas babás", services_path%>
   </li>
   <li>
-    <a href="#" class="tab-underlined">My Jobs</a>
+    <!-- <%= link_to "Meus serviços",  babysitter_babysitter_services_path%> -->
   </li>
 </ul>
-<div class="m-3">
-  <% @services.each do |service| %>
-    <p>Email da babysitter: <%= service.babysitter.user.email %> </p>
-    <p>Início do Serviço: <%= service.start_date %> </p>
-    <p>Término do Serviço: <%= service.end_date %> </p>
-    <p>Duração: <%= service.duration %> </p>
-  <% end %>
+
+<div class="container pb-3">Serviços agendados</h1>
+  <div class="row marging justify-content-between">
+    <% @services.each do |service| %>
+      <div class="col-12 col-lg-4">
+        <%= link_to babysitter_path(service.babysitter) do %>
+          <div class="card-trip">
+            <%= cl_image_tag service.babysitter.user.photo.key %>
+            <div class="card-trip-infos">
+              <p>Nome: <%=service.babysitter.user.name%></p>
+              <p>Dia e hora do Serviço: <%= service.date_time %> </p>
+              <p>Duração em horas: <%= service.duration %> </p>
+              <p>Preço total: <%=service.total_price%></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "Agendar mais serviços", filter_path%>
 </div>
-
-

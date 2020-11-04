@@ -32,6 +32,8 @@ gem 'devise'
 
 # Pundit
 gem 'pundit'
+gem 'activestorage-validator'
+
 
 # use the dotenv gem for security
 gem 'dotenv-rails', groups: [:development, :test]
