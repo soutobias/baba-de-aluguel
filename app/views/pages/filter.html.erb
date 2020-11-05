@@ -8,9 +8,21 @@
   <div class="d-flex justify-content-between">
     <div class="card-border p-3 h-100">
       <h2>Conte-nos um pouco sobre o que você procura</h2>
-      <%= simple_form_for :search, url: babysitters_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-        <%= f.input :price, input_html: {value: ""}, label: 'Preço:' %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
+      <%= form_tag babysitters_path, method: :get, class: 'form-inline' do %>
+        <%= number_field_tag :price,
+          params[:price],
+          class: "form-control",
+          placeholder: "Preço por hora"
+        %>
+        <%= number_field_tag :experience,
+          params[:experience],
+          class: "form-control",
+          placeholder: "Anos de experiência"
+        %>
+        <%= select_tag :skill, raw("<option>Selecione uma habilidade</option><option>cozinhar</option><option>limpar</option><option>ensinar</option><option>brincar</option>"),
+          class: "form-control"
+        %>
+        <%= submit_tag "Procurar", class: "btn btn-primary" %>
       <% end %>
     </div>
     <div class="card-trip">

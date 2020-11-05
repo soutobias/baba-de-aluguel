@@ -2,9 +2,32 @@ class BabysittersController < ApplicationController
   before_action :set_babysitter, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @babysitters = Babysitter.new
-    # authorize @babysitter
-    @babysitters = policy_scope(Babysitter)
+    if params[:commit].present?
+      query = ""
+      if params[:price] != ""
+        query += "price <= #{params[:price].to_i} AND "
+      end
+      if params[:experience] != ""
+        query += "experience >= #{params[:experience].to_i} AND "
+      end
+      if params[:skill] != "Selecione uma habilidade"
+        query += "skill = '#{params[:skill]}' AND "
+      end
+      if query != ""
+        query = query[0..-5]
+        @babysitters = policy_scope(Babysitter).where(query).order(created_at: :desc)
+      else
+        @babysitters = policy_scope(Babysitter).order(created_at: :desc)
+      end
+    else
+      @babysitters = policy_scope(Babysitter).order(created_at: :desc)
+    end
+    @markers = @babysitters.map do |babysitter|
+      {
+        lng: babysitter.user.longitude,
+        lat: babysitter.user.latitude
+      }
+    end
   end
 
   def new
