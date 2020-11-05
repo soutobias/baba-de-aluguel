@@ -3,16 +3,9 @@
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
 </div>
-<ul class="list-inline tabs-underlined">
-  <li>
-    <p id="tab1">"Minhas babás"</p>
-  </li>
-  <li>
-    <p id="tab2">"Meus Serviços"</p>
-  </li>
-</ul>
 
-<div class="container pb-3">Serviços agendados</h1>
+<div class="container p-3">
+  <h2>Babás agendadas</h2>
   <div class="row marging justify-content-between" id="my_babysitters">
     <% @services.each do |service| %>
       <div class="col-12 col-lg-4">
@@ -31,20 +24,27 @@
     <% end %>
   </div>
   <%= link_to "Agendar mais serviços", filter_path%>
-  <% if current_user.babysitter? %>
+</div>
+<% if current_user.babysitter %>
+  <div class="container p-3">
+    <h2>Meus serviços como babá agendados</h2>
     <div class="row marging justify-content-between" id="my_services" type="hidden">
-      <% @services.current_user.each do |service| %>
-        <div class="col-12 col-lg-4">
-          <div class="card-trip">
-            <div class="card-trip-infos">
-              <p>Nome: <%=service.user.name%></p>
-              <p>Dia e hora do Serviço: <%= service.date_time %> </p>
-              <p>Duração em horas: <%= service.duration %> </p>
-              <p>Preço total: <%=service.total_price%></p>
+      <% if current_user.babysitter.services.empty? %>
+        <p class="p-3">Não há serviços agendados com você neste momento</p>
+      <% else %>
+        <% current_user.babysitter.services.each do |service| %>
+          <div class="col-12 col-lg-4">
+            <div class="card-trip">
+              <div class="card-trip-infos">
+                <p>Nome: <%=service.user.name%></p>
+                <p>Dia e hora do Serviço: <%= service.date_time %> </p>
+                <p>Duração em horas: <%= service.duration %> </p>
+                <p>Preço total: <%=service.total_price%></p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

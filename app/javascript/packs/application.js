@@ -19,17 +19,4 @@ import "../plugins/flatpickr"
 
 document.addEventListener("turbolinks:load", () => {
 
-  const button = document.getElementById("tab1");
-  button.addEventListener("click", (event) => {
-    const tab = document.getElementById("my_babysitters");
-    tab.setAttribute("type", "hidden");
-    tab.addTyoe("disabled");
-    button.innerText = "Bingo";
-    const audio = new Audio('sound.mp3');
-    audio.play();
-  });
-
-
-  form.addEventListener('blur', (event) => {
-
 });
