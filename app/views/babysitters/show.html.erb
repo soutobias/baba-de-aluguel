@@ -16,15 +16,19 @@
         </div>
       </div>
     </div>
-    <div>
-      <h3>Agendamento</h3>
-      <%= simple_form_for [ @babysitter, @service ] do |f| %>
-        <%= f.input :date_time %>
-        <%= f.input :duration, label: 'Duração em horas:' %>
-        <%= f.button :submit, label: 'Agendar serviço', class: "btn btn-primary"%>
-      <% end %>
-    </div>
+    <% if @babysitter.user != current_user %>
+      <div>
+        <h3>Agendamento</h3>
+        <%= simple_form_for [ @babysitter, @service ] do |f| %>
+          <%= f.input :start_date, required: true, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, required: true, input_html: {class: "datepicker"} %>
+          <%= f.input :duration, label: 'Duração em horas:', collection: [4, 8, 12] %>
+          <%= f.button :submit, label: 'Agendar serviço', class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "Editar meu perfil", edit_babysitter_path(@babysitter), class: "btn btn-primary"%>
+      <%= link_to "Parar de oferecer meu serviço", babysitter_path(@babysitter), method: :delete, data: { confirm: "Are you sure?" }, class: "btn text-primary" %>
+    <% end %>
   </div>
 </div>
-
-<%= link_to "Voltar para a Lista de Babysitters", babysitters_path%>
