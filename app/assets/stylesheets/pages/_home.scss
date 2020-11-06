@@ -4,17 +4,28 @@ h1, h2, p{
   font-family: 'Patrick Hand', cursive;
 }
 
-.first {
-  padding: 50px;
-  height: 100px;
+.container {
 }
 
 .title {
   text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px grey;
 }
 
-.home-banner {
+.subtitle {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px grey;
+}
 
+.text {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px grey;
 }
 
 .btn {
@@ -24,4 +35,20 @@ h1, h2, p{
   height: 45px;
   text-align: center;
   font-size: 18px;
+  position: absolute;
+  left: 44%;
+  bottom: 7%;
+}
+
+.card {
+  margin: 30px;
+  height: 200px;
+  text-align: justify;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 3px 3px 11px grey;
+  }
+
+h5 {
+  text-align: center;
 }
