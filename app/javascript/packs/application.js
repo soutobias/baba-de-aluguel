@@ -9,6 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 import 'bootstrap';
+
+import { initMapbox } from '../plugins/init_mapbox';
+
 import { toogleTab1, toogleTab2 } from '../service_index';
 import flatpickr from "flatpickr";
 
@@ -22,6 +25,7 @@ import flatpickr from "flatpickr";
 document.addEventListener("turbolinks:load", () => {
   toogleTab2();
   toogleTab1();
+  initMapbox();
   flatpickr(".datepicker", {
     altInput: true,
     altFormat: "F j, Y",

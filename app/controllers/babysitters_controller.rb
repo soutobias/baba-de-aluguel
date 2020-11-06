@@ -2,6 +2,9 @@ class BabysittersController < ApplicationController
   before_action :set_babysitter, only: [:show, :edit, :update, :destroy]
 
   def index
+
+    @babysitters = policy_scope(Babysitter)
+
     if params[:commit].present?
       query = ""
       if params[:price] != ""
@@ -23,11 +26,14 @@ class BabysittersController < ApplicationController
       @babysitters = policy_scope(Babysitter).order(created_at: :desc)
     end
     @markers = @babysitters.map do |babysitter|
-      {
-        lng: babysitter.user.longitude,
-        lat: babysitter.user.latitude
-      }
+      if babysitter.user.latitude && babysitter.user.longitude
+        {
+          lng: babysitter.user.longitude,
+          lat: babysitter.user.latitude
+        }
+      end
     end
+    @markers.compact!
   end
 
   def new
