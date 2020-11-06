@@ -2,14 +2,16 @@ class BabysittersController < ApplicationController
   before_action :set_babysitter, only: [:show, :edit, :update, :destroy]
 
   def index
-    @babysitters = policy_scope(Babysitter).where.not(latitude: nil, longitude: nil)
-    # @babysitters = Babysitter.where.not(latitude: nil, longitude: nil)
+    @babysitters = policy_scope(Babysitter)
     @markers = @babysitters.map do |babysitter|
-      {
-        lng: babysitter.user.longitude,
-        lat: babysitter.user.latitude
-      }
+      if babysitter.user.latitude && babysitter.user.longitude
+        {
+          lng: babysitter.user.longitude,
+          lat: babysitter.user.latitude
+        }
+      end
     end
+    @markers.compact!
   end
 
   def new
