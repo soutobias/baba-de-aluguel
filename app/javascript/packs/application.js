@@ -9,7 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 import 'bootstrap';
-import "../plugins/flatpickr"
+import { toogleTab1, toogleTab2 } from '../service_index';
+import flatpickr from "flatpickr";
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -18,5 +20,11 @@ import "../plugins/flatpickr"
 // const imagePath = (name) => images(name, true)
 
 document.addEventListener("turbolinks:load", () => {
-
+  toogleTab2();
+  toogleTab1();
+  flatpickr(".datepicker", {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+  });
 });

@@ -31,8 +31,15 @@ class BabysittersController < ApplicationController
   end
 
   def new
-    @babysitter = Babysitter.new
-    authorize @babysitter
+    if current_user.babysitter
+      @babysitter = current_user.babysitter
+      @service = Service.new
+      authorize @babysitter
+      render :show
+    else
+      @babysitter = Babysitter.new
+      authorize @babysitter
+    end
   end
 
   def create
@@ -60,7 +67,7 @@ class BabysittersController < ApplicationController
 
   def destroy
     @babysitter.destroy
-    redirect_to profile_path
+    redirect_to root_path
   end
 
   private
