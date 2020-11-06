@@ -20,7 +20,7 @@
       <div>
         <h3>Agendamento</h3>
         <%= simple_form_for [ @babysitter, @service ] do |f| %>
-          <%= f.input :start_date, required: true, input_html: {class: "datepicker"} %>
+          <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
           <%= f.input :end_date, required: true, input_html: {class: "datepicker"} %>
           <%= f.input :duration, label: 'Duração em horas:', collection: [4, 8, 12] %>
           <%= f.button :submit, label: 'Agendar serviço', class: "btn btn-primary"%>

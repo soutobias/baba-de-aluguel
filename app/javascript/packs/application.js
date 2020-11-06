@@ -7,10 +7,10 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("jquery")
 import 'bootstrap';
 
 import { initMapbox } from '../plugins/init_mapbox';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { toogleTab1, toogleTab2 } from '../service_index';
 import flatpickr from "flatpickr";
@@ -26,9 +26,5 @@ document.addEventListener("turbolinks:load", () => {
   toogleTab2();
   toogleTab1();
   initMapbox();
-  flatpickr(".datepicker", {
-    altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
-  });
+  flatpickr(".datepicker", {});
 });
