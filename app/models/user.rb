@@ -13,4 +13,5 @@ class User < ApplicationRecord
   validates :photo, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+  has_many :reviews
 end

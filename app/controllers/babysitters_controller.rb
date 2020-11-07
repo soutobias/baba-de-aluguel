@@ -61,6 +61,17 @@ class BabysittersController < ApplicationController
 
   def show
     @service = Service.new
+    @review = Review.new
+    if @babysitter.users.where("user_id = ?", current_user.id).empty?
+      @user = false
+    else
+      @user = true
+    end
+    if @babysitter.reviews.where("user_id = ?", current_user.id).empty?
+      @user1 = true
+    else
+      @user1 = false
+    end
   end
 
   def edit
