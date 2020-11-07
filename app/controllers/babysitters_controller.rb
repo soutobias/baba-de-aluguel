@@ -2,10 +2,21 @@ class BabysittersController < ApplicationController
   before_action :set_babysitter, only: [:show, :edit, :update, :destroy]
 
   def index
-
+    if params[:query]
+      if params[:query] == "Menor Preço"
+        order_param = "price ASC"
+      elsif params[:query] == "Mais tempo de Experiência"
+        order_param = "experience DESC"
+      else
+        order_param = "created_at DESC"
+      end
+    end
     @babysitters = policy_scope(Babysitter)
-
     if params[:commit].present?
+      @price = params[:price]
+      @commit = params[:commit]
+      @skill = params[:skill]
+      @experience = params[:experience]
       query = ""
       if params[:price] != ""
         query += "price <= #{params[:price].to_i} AND "
@@ -18,12 +29,12 @@ class BabysittersController < ApplicationController
       end
       if query != ""
         query = query[0..-5]
-        @babysitters = policy_scope(Babysitter).where(query).order(created_at: :desc)
+        @babysitters = policy_scope(Babysitter).where(query).order(order_param)
       else
-        @babysitters = policy_scope(Babysitter).order(created_at: :desc)
+        @babysitters = policy_scope(Babysitter).order(order_param)
       end
     else
-      @babysitters = policy_scope(Babysitter).order(created_at: :desc)
+      @babysitters = policy_scope(Babysitter).order(order_param)
     end
     @markers = @babysitters.map do |babysitter|
       if babysitter.user.latitude && babysitter.user.longitude
