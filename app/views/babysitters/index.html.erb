@@ -5,6 +5,19 @@
 </div>
 <div class="container pb-3">
   <h1 class="font-weight-bold text-center p-3 h1">Escolha sua babá</h1>
+  <%= form_tag babysitters_path, method: :get, class: 'form-horizontal d-flex justify-content-end' do %>
+    <%= label_tag "Classificar por:" %>
+    <%= select_tag :query, raw("<option>Menor Preço</option><option>Mais tempo de Experiência</option>"),
+      class: "form-control w-25"
+    %>
+    <% if @price %>
+      <%= hidden_field_tag :price, @price.to_s %>
+      <%= hidden_field_tag :skill, @skill.to_s %>
+      <%= hidden_field_tag :commit, @commit.to_s %>
+      <%= hidden_field_tag :experience, @experience.to_s %>
+    <% end %>
+    <%= submit_tag("Classificar", class: "btn text-primary") %>
+  <% end %>
   <div class="row marging justify-content-between">
     <% @babysitters.each do |babysitter| %>
       <div class="col-12 col-lg-4">
