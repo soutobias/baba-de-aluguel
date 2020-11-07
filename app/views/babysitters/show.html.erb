@@ -1,18 +1,21 @@
-<div class="banner>
-  <div class="container text-center justify-content-center align-middle">
-    <h1 class="font-weight-bold">Baba de Aluguel</h1>
+<div class="banner">
+  <div class="container">
+      <h1 class="title">BABÁ DE ALUGUEL</h1>
   </div>
 </div>
 <div class="container w-100 justify-content-center margin-top-negative">
   <div class="d-flex justify-content-between">
+    <div>
+      <h2><strong><%=@babysitter.user.name%></strong></h2>
+      <%= cl_image_tag @babysitter.user.photo.key %>
+    </div>
     <div class="m-3 show-left flex-grow-1">
       <div class="card-border p-3 h-100">
-        <h3><%=@babysitter.user.name%></h3>
         <div>
-          <p>Habilidade: <%=@babysitter.skill%></p>
-          <p>Tempo de experiencia: <%=@babysitter.experience%></p>
-          <p>Preco: <%=@babysitter.price%></p>
-          <p>Local de trabalho: <%=@babysitter.user.location%></p>
+          <h3>Habilidade: <%=@babysitter.skill%></h3>
+          <h3>Tempo de experiencia: <%=@babysitter.experience%> anos</h3>
+          <h3>Preco: R$<%=@babysitter.price%>0</h3>
+          <h3>Local de trabalho: Bairro de <%=@babysitter.user.location%></h3>
         </div>
       </div>
     </div>
@@ -27,8 +30,11 @@
         <% end %>
       </div>
     <% else %>
-      <%= link_to "Editar meu perfil", edit_babysitter_path(@babysitter), class: "btn btn-primary"%>
-      <%= link_to "Parar de oferecer meu serviço", babysitter_path(@babysitter), method: :delete, data: { confirm: "Are you sure?" }, class: "btn text-primary" %>
+      <div></div>
+      <div>
+        <%= link_to "Editar meu perfil", edit_babysitter_path(@babysitter), class: "btn text-primary w-50 h-25 m-3"%>
+        <%= link_to "Parar de oferecer meu serviço", babysitter_path(@babysitter), method: :delete, data: { confirm: "Are you sure?" }, class: "btn text-primary w-50 h-25 m-3" %>
+      </div>
     <% end %>
   </div>
 </div>
