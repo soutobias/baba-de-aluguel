@@ -23,7 +23,7 @@ User.destroy_all
 Review.destroy_all
 
 c = 1
-3.times do
+10.times do
   puts c
   file = URI.open('https://kitt.lewagon.com/placeholder/users/random')
   u = User.new(
@@ -47,7 +47,7 @@ c = 1
   5.times do
     r = Review.create(
       rating: (1..5).to_a.sample,
-      description: Faker::TvShows::BigBangTheory,
+      description: Faker::TvShows::BigBangTheory.quote,
       babysitter_id: Babysitter.maximum('id'),
       user_id: User.maximum('id')
     )
