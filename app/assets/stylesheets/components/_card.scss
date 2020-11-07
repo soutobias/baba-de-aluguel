@@ -1,27 +1,65 @@
 .card-trip {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 20px;
 }
 .card-trip > img {
-  height: 200px;
+  height: 215px;
   width: 100%;
   object-fit: cover;
+  border-top-radius: 20px;
 }
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-.card-trip p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
+
 .card-trip .card-trip-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  padding: 18px;
+}
+
+.card-trip .card-trip-infos h5 {
+  text-align: left;
+}
+
+.card-trip .card-trip-infos .btn {
+  left: 63%;
+  bottom: 5%;
+}
+
+.card-f {
+  margin: 20px;
+  height: 320px;
+  text-align: justify;
   position: relative;
+  border-radius: 20px;
+  box-shadow: 3px 3px 11px grey;
+}
+
+.card-f .btn {
+  background-color: #C8A9A9;
+  border-radius: 20px;
+  width: 121px;
+  height: 45px;
+  text-align: center;
+  font-size: 18px;
+  position: absolute;
+  left: 63%;
+  bottom: 5%;
+}
+
+.card-filter {
+  padding: 23px;
+}
+
+.form-horizontal input {
+  opacity: 0.5;
+}
+
+.form-horizontal .btn {
+  opacity: 1.0;
+}
+
+.card-new-nanny {
+  margin: 30px;
+  height: 420px;
+  text-align: justify;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 3px 3px 11px grey;
 }

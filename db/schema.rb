@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_235439) do
+ActiveRecord::Schema.define(version: 2020_11_07_112524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,14 +46,26 @@ ActiveRecord::Schema.define(version: 2020_11_03_235439) do
     t.index ["user_id"], name: "index_babysitters_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "description"
+    t.bigint "babysitter_id", null: false
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["babysitter_id"], name: "index_reviews_on_babysitter_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "babysitter_id", null: false
-    t.datetime "date_time"
+    t.date "start_date"
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "total_price"
+    t.date "end_date"
     t.index ["babysitter_id"], name: "index_services_on_babysitter_id"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
@@ -90,6 +102,8 @@ ActiveRecord::Schema.define(version: 2020_11_03_235439) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "babysitters", "users"
+  add_foreign_key "reviews", "babysitters"
+  add_foreign_key "reviews", "users"
   add_foreign_key "services", "babysitters"
   add_foreign_key "services", "users"
 end

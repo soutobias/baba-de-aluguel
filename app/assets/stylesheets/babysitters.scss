@@ -1,3 +1,28 @@
 // Place all the styles related to the babysitters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "pages/home";
+
+h3 {
+  text-align: center;
+}
+
+h5 {
+  text-align: left;
+}
+
+p {
+  font-size: 18px;
+}
+
+ .options-buttons {
+  height: 100px;
+ }
+
+ .option-one {
+  color: grey;
+}
+
+.option-two {
+  color: grey;
+}

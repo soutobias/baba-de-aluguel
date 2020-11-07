@@ -1,24 +1,43 @@
-<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
-  <div class="container text-center justify-content-center align-middle">
-    <h1 class="font-weight-bold">Baba de Aluguel</h1>
+<div class="banner_two">
+  <div class="container">
+      <h1 class="title">BABÁ DE ALUGUEL</h1>
   </div>
 </div>
 
-<div class="container w-100 justify-content-center">
-  <div class="d-flex justify-content-between">
-    <div class="card-border p-3 h-100">
-      <h2>Conte-nos um pouco sobre o que você procura</h2>
-      <%= simple_form_for :search, url: babysitters_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-        <%= f.input :price, input_html: {value: ""}, label: 'Preço:' %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
+<div class="row">
+  <div class="col-lg-6 col-md-12 col-sm-12">
+    <div class="card-f">
+      <div class="card-filter text-center">
+        <h5 class="card-title mb-4">Conte-nos um pouco sobre o que você procura</h5>
+        <%= form_tag babysitters_path, method: :get, class: 'form-horizontal' do %>
+        <%= number_field_tag :price,
+          params[:price],
+          class: "form-control mb-2",
+          placeholder: "Preço por hora"
+        %>
+        <%= number_field_tag :experience,
+          params[:experience],
+          class: "form-control mb-2",
+          placeholder: "Anos de experiência"
+        %>
+        <%= select_tag :skill, raw("<option>Selecione uma habilidade</option><option>cozinhar</option><option>limpar</option><option>ensinar</option><option>brincar</option>"),
+          class: "form-control"
+        %>
+        <%= submit_tag "Procurar", class: "btn" %>
       <% end %>
+      </div>
     </div>
-    <div class="card-trip">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-      <div class="card-trip-infos">
-        <h3>Dicas</h3>
-        <p>Teatro e diversão perto de você</p>
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12">
+    <div class="card-f">
+      <div class="card-trip">
+        <img src="https://i0.wp.com/acontecejundiai.com.br/wp-content/uploads/2019/09/Pinoquio.jpg?resize=800%2C445" />
+        <div class="card-trip-infos">
+          <h5>Teatro e diversão perto de você</h5>
+          <%= submit_tag "Saiba mais", class: "btn" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

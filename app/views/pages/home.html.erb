@@ -1,36 +1,34 @@
-<%= render 'shared/navbar' %>
-<div class="banner home-banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
-  <div class="container first">
-    <div class="column justify-content-center">
-      <h1 class="title">Babá de Aluguel</h1>
-      <h2>Encontre sua babá perfeita!</h2>
-      <p>Trabalhe com tranquilidade, divirta-se sem preocupações</p>
-    </div>
+<div class="banner">
+  <div class="container">
+      <h1 class="title">BABÁ DE ALUGUEL</h1>
+      <h2 class="subtitle">Encontre sua babá perfeita!</h2>
+      <h2 class="text">Trabalhe com tranquilidade, divirta-se sem preocupações</h2>
   </div>
 </div>
+</div>
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Encontre trabalho</h5>
+        <h5 class="card-title">ENCONTRE TRABALHO</h5>
         <p class="card-text">Veja vagas perto de você e fale com interessado.</p>
         <%= link_to "Procurar", new_babysitter_path, class: "btn" %>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Contratar profissionais</h5>
+        <h5 class="card-title">CONTRATAR PROFISSIONAIS</h5>
         <p class="card-text">Veja profissionais qualificados perto de você e agende uma entrevista.</p>
         <%= link_to "Procurar", filter_path, class: "btn" %>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Histórico</h5>
+        <h5 class="card-title">HISTÓRICO</h5>
         <p class="card-text">Veja seus agendamentos.</p>
         <%= link_to "Entre", services_path, class: "btn" %>
       </div>

@@ -3,21 +3,61 @@
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
 </div>
-<ul class="list-inline tabs-underlined">
-  <li>
-    <a href="#" class="tab-underlined active">My Babysitters</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">My Jobs</a>
-  </li>
-</ul>
-<div class="m-3">
-  <% @services.each do |service| %>
-    <p>Email da babysitter: <%= service.babysitter.user.email %> </p>
-    <p>Início do Serviço: <%= service.start_date %> </p>
-    <p>Término do Serviço: <%= service.end_date %> </p>
-    <p>Duração: <%= service.duration %> </p>
-  <% end %>
+
+<div class="container p-3">
+  <ul class="list-inline tabs-underlined">
+    <li>
+      <p class="tab-underlined active" id="tab1">Minhas babas</p>
+    </li>
+    <li>
+      <p class="tab-underlined" id="tab2">Meus serviços como babá</p>
+    </li>
+  </ul>
+
+  <div id="my_babysitters">
+  <h2>Babás agendadas</h2>
+  <div class="row marging justify-content-between">
+    <% @services.each do |service| %>
+      <div class="col-12 col-lg-4">
+        <%= link_to babysitter_path(service.babysitter) do %>
+          <div class="card-trip">
+            <%= cl_image_tag service.babysitter.user.photo.key %>
+            <div class="card-trip-infos">
+              <p>Nome: <%=service.babysitter.user.name%></p>
+              <p>Início do Serviço: <%= service.start_date %> </p>
+              <p>Término do Serviço: <%= service.end_date %> </p>
+              <p>Duração em horas: <%= service.duration %> </p>
+              <p>Preço total: <%=service.total_price%></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "Agendar mais serviços", filter_path%>
+  </div>
+  <div id="my_services" class="inactive-tab">
+    <% if current_user.babysitter %>
+      <h2>Meus serviços como babá agendados</h2>
+      <div class="row marging justify-content-between" id="my_services">
+        <% if current_user.babysitter.services.empty? %>
+          <p class="p-3">Não há serviços agendados com você neste momento</p>
+        <% else %>
+          <% current_user.babysitter.services.each do |service| %>
+            <div class="col-12 col-lg-4">
+              <div class="card-trip">
+                <div class="card-trip-infos">
+                  <p>Nome: <%=service.user.name%></p>
+                  <p>Início do Serviço: <%= service.start_date %> </p>
+                  <p>Término do Serviço: <%= service.end_date %> </p>
+                  <p>Duração em horas: <%= service.duration %> </p>
+                  <p>Preço total: <%=service.total_price%></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-
