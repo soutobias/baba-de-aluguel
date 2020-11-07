@@ -14,8 +14,10 @@
         <p>Tempo de experiencia: <%=@babysitter.experience%> ano(s)</p>
         <p>Preço: R$ <%=@babysitter.price%></p>
         <p>Local de trabalho: <%=@babysitter.user.location%></p>
-        <%= link_to "Editar meu perfil", edit_babysitter_path(@babysitter), class: "option-one"%>
-        <%= link_to "Parar de oferecer meu serviço", babysitter_path(@babysitter), method: :delete, data: { confirm: "Are you sure?" }, class: "option-two" %>
+        <% if @babysitter.user == current_user %>
+          <%= link_to "Editar meu perfil", edit_babysitter_path(@babysitter), class: "option-one"%>
+          <%= link_to "Parar de oferecer meu serviço", babysitter_path(@babysitter), method: :delete, data: { confirm: "Are you sure?" }, class: "option-two" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -40,7 +42,7 @@
   <div>
     <div class="m-3">
       <h2>Avaliações!</h2>
-      <% if @babysitter.reviews %>
+      <% if !@babysitter.reviews.empty? %>
         <% @babysitter.reviews.each do |review| %>
           <div class='d-flex'>
             <% for i in 0...review.rating  %>
@@ -52,7 +54,7 @@
       <% else  %>
         <h4 class="mb-5">Essa babá ainda não possui avaliações</h4>
       <% end %>
-      <% if @babysitter.user != current_user && @user && @user1 %>
+      <% if @babysitter.user != current_user && @user %>
         <h3 class="mt-5">O que achou do servico da babá? Deixe seu comentário!</h3>
         <%= simple_form_for [ @babysitter, @review ] do |f| %>
           <%= f.input :description %>
