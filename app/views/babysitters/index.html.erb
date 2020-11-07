@@ -5,6 +5,19 @@
 </div>
 <div class="container pb-3">
   <h1 class="font-weight-bold text-center p-3 h1">Escolha sua babá</h1>
+  <%= form_tag babysitters_path, method: :get, class: 'form-horizontal d-flex justify-content-end' do %>
+    <%= label_tag "Classificar por:" %>
+    <%= select_tag :query, raw("<option>Menor Preço</option><option>Mais tempo de Experiência</option>"),
+      class: "form-control w-25"
+    %>
+    <% if @price %>
+      <%= hidden_field_tag :price, @price.to_s %>
+      <%= hidden_field_tag :skill, @skill.to_s %>
+      <%= hidden_field_tag :commit, @commit.to_s %>
+      <%= hidden_field_tag :experience, @experience.to_s %>
+    <% end %>
+    <%= submit_tag("Classificar", class: "btn text-primary") %>
+  <% end %>
   <div class="row">
       <% @babysitters.each do |babysitter| %>
       <div class="col-lg-4 col-md-6 col-sm-12">
@@ -17,6 +30,19 @@
               <p>Habilidade: <%=babysitter.skill%></p>
               <p>Tempo de experiencia: <%=babysitter.experience%></p>
               <p>Price: <%=number_to_currency(babysitter.price, unit: "R$ ")%></p>
+              <% if babysitter.reviews != [] %>
+                <% sum = 0 %>
+                <% babysitter.reviews.each do |review| %>
+                  <% sum += review.rating %>
+                <% end %>
+                <div class="d-flex">
+                  <% med_rating = sum / babysitter.reviews.count %>
+                  <% for i in 0...med_rating  %>
+                    <i class="fas fa-star pt-1"></i>
+                  <% end %>
+                  <p>(<%= babysitter.reviews.count %> avaliações)</p>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>
