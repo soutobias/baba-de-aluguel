@@ -36,3 +36,29 @@
     <% end %>
   </div>
 </div>
+<div class="container w-100 justify-content-center margin-top-negative">
+  <div>
+    <div class="m-3">
+      <h2>Avaliações!</h2>
+      <% if @babysitter.reviews %>
+        <% @babysitter.reviews.each do |review| %>
+          <div class='d-flex'>
+            <% for i in 0...review.rating  %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <p><%= review.description %> </p>
+          </div>
+        <% end %>
+      <% else  %>
+        <h4 class="mb-5">Essa babá ainda não possui avaliações</h4>
+      <% end %>
+      <% if @babysitter.user != current_user && @user && @user1 %>
+        <h3 class="mt-5">O que achou do servico da babá? Deixe seu comentário!</h3>
+        <%= simple_form_for [ @babysitter, @review ] do |f| %>
+          <%= f.input :description %>
+          <%= f.input :rating %>
+          <%= f.submit "Adicione uma Avaliação", class: 'btn text-primary' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
