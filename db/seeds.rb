@@ -48,7 +48,7 @@ c = 1
     r = Review.create(
       rating: (1..5).to_a.sample,
       description: Faker::TvShows::BigBangTheory,
-      babysitters_id: Babysitter.maximum('id'),
+      babysitter_id: Babysitter.maximum('id'),
       user_id: User.maximum('id')
     )
   end
