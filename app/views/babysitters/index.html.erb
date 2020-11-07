@@ -1,31 +1,36 @@
-<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
-  <div class="container text-center justify-content-center align-middle">
-    <h1 class="font-weight-bold">Baba de Aluguel</h1>
+<div class="banner_three">
+  <div class="container">
+    <h1 class="title">BABÁ DE ALUGUEL</h1>
   </div>
 </div>
-<h1 class="font-weight-bold text-center p-3 h1">Escolha sua babá</h1>
-<div class="container pb-3 main-container">
-  <div class="row marging justify-content-between">
-    <% @babysitters.each do |babysitter| %>
-      <div class="col-12 col-lg-4">
+<div class="container pb-3">
+  <h1 class="font-weight-bold text-center p-3 h1">Escolha sua babá</h1>
+  <div class="row">
+      <% @babysitters.each do |babysitter| %>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card-f-nannys">
         <%= link_to babysitter_path(babysitter) do %>
           <div class="card-trip">
-            <%= cl_image_tag babysitter.user.photo.key %>
+          <%= cl_image_tag babysitter.user.photo.key %>
             <div class="card-trip-infos">
               <p>Nome: <%=babysitter.user.name%></p>
               <p>Habilidade: <%=babysitter.skill%></p>
               <p>Tempo de experiencia: <%=babysitter.experience%></p>
-              <p>Price: <%=babysitter.price%></p>
+              <p>Price: <%=number_to_currency(babysitter.price, unit: "R$ ")%></p>
             </div>
           </div>
         <% end %>
+       </div>
       </div>
-    <% end %>
+      <% end %>
   </div>
-  <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <div class="text-center">
+ <%= link_to "Fazer busca novamente", filter_path, class: "link ml-4 mt-5" %>
+ </div>
 </div>
-<%= link_to "Nova busca", filter_path, class: "btn btn-primary"%>
+
+<div id="map"
+   style="width: 100%; height: 600px;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
