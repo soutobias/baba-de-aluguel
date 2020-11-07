@@ -18,8 +18,8 @@
 }
 
 .card-trip .card-trip-infos .btn {
-  left: 66%;
-  bottom: 6%;
+  left: 63%;
+  bottom: 5%;
 }
 
 .card-f {
@@ -39,10 +39,27 @@
   text-align: center;
   font-size: 18px;
   position: absolute;
-  left: 66%;
-  bottom: 6%;
+  left: 63%;
+  bottom: 5%;
 }
 
 .card-filter {
   padding: 23px;
+}
+
+.form-horizontal input {
+  opacity: 0.5;
+}
+
+.form-horizontal .btn {
+  opacity: 1.0;
+}
+
+.card-new-nanny {
+  margin: 30px;
+  height: 420px;
+  text-align: justify;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 3px 3px 11px grey;
 }
