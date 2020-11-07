@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1594639738432-ea7a76cd466c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1567326472846-e99e14d59514?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')">
   <div class="container text-center justify-content-center align-middle">
     <h1 class="font-weight-bold">Baba de Aluguel</h1>
   </div>
@@ -24,17 +24,17 @@
             <%= cl_image_tag service.babysitter.user.photo.key %>
             <div class="card-trip-infos">
               <p>Nome: <%=service.babysitter.user.name%></p>
-              <p>Início do Serviço: <%= service.start_date %> </p>
-              <p>Término do Serviço: <%= service.end_date %> </p>
-              <p>Duração em horas: <%= service.duration %> </p>
-              <p>Preço total: <%=service.total_price%></p>
+              <p>Início do Serviço: <%= service.start_date.strftime("%d/%m/%Y") %> </p>
+              <p>Término do Serviço: <%= service.end_date.strftime("%d/%m/%Y") %> </p>
+              <p>Duração: <%= service.duration %> horas </p>
+              <p>Preço total: <%=number_to_currency(service.total_price, unit: "R$ ")%></p>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
-  <%= link_to "Agendar mais serviços", filter_path%>
+  <%= link_to "Agendar mais serviços", filter_path, class: "btn text-primary"%>
   </div>
   <div id="my_services" class="inactive-tab">
     <% if current_user.babysitter %>

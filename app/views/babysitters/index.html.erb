@@ -28,7 +28,20 @@
               <p>Nome: <%=babysitter.user.name%></p>
               <p>Habilidade: <%=babysitter.skill%></p>
               <p>Tempo de experiencia: <%=babysitter.experience%></p>
-              <p>Price: <%=babysitter.price%></p>
+              <p>Price: <%=number_to_currency(babysitter.price, unit: "R$ ")%></p>
+              <% if babysitter.reviews != [] %>
+                <% sum = 0 %>
+                <% babysitter.reviews.each do |review| %>
+                  <% sum += review.rating %>
+                <% end %>
+                <div class="d-flex">
+                  <% med_rating = sum / babysitter.reviews.count %>
+                  <% for i in 0...med_rating  %>
+                    <i class="fas fa-star pt-1"></i>
+                  <% end %>
+                  <p>(<%= babysitter.reviews.count %> avaliações)</p>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>
