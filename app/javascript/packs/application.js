@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 import 'bootstrap';
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 
 import { toogleTab1, toogleTab2 } from '../service_index';
