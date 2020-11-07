@@ -5,58 +5,62 @@
 </div>
 <div class="container pb-3">
   <h1 class="font-weight-bold text-center p-3 h1">Escolha sua babá</h1>
-  <%= form_tag babysitters_path, method: :get, class: 'form-horizontal d-flex justify-content-end' do %>
-    <%= label_tag "Classificar por:" %>
-    <%= select_tag :query, raw("<option>Menor Preço</option><option>Mais tempo de Experiência</option>"),
-      class: "form-control w-25"
-    %>
-    <% if @price %>
-      <%= hidden_field_tag :price, @price.to_s %>
-      <%= hidden_field_tag :skill, @skill.to_s %>
-      <%= hidden_field_tag :commit, @commit.to_s %>
-      <%= hidden_field_tag :experience, @experience.to_s %>
-    <% end %>
-    <%= submit_tag("Classificar", class: "btn text-primary") %>
-  <% end %>
-  <div class="row">
-      <% @babysitters.each do |babysitter| %>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card-f-nannys">
-        <%= link_to babysitter_path(babysitter) do %>
-          <div class="card-trip">
-          <%= cl_image_tag babysitter.user.photo.key %>
-            <div class="card-trip-infos">
-              <p>Nome: <%=babysitter.user.name%></p>
-              <p>Habilidade: <%=babysitter.skill%></p>
-              <p>Tempo de experiencia: <%=babysitter.experience%></p>
-              <p>Price: <%=number_to_currency(babysitter.price, unit: "R$ ")%></p>
-              <% if babysitter.reviews != [] %>
-                <% sum = 0 %>
-                <% babysitter.reviews.each do |review| %>
-                  <% sum += review.rating %>
-                <% end %>
-                <div class="d-flex">
-                  <% med_rating = sum / babysitter.reviews.count %>
-                  <% for i in 0...med_rating  %>
-                    <i class="fas fa-star pt-1"></i>
-                  <% end %>
-                  <p>(<%= babysitter.reviews.count %> avaliações)</p>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-       </div>
-      </div>
+  <div class="filtro">
+    <%= form_tag babysitters_path, method: :get, class: 'form-horizontal d-flex justify-content-start vertical-align-center' do %>
+      <%= select_tag :query, raw("<option>Menor Preço</option><option>Mais tempo de Experiência</option>"),
+        class: "form-control w-25"
+      %>
+      <% if @price %>
+        <%= hidden_field_tag :price, @price.to_s %>
+        <%= hidden_field_tag :skill, @skill.to_s %>
+        <%= hidden_field_tag :commit, @commit.to_s %>
+        <%= hidden_field_tag :experience, @experience.to_s %>
       <% end %>
+      <%= submit_tag("Filtrar", class: "btn-filter ml-2") %>
+    <% end %>
   </div>
-  <div class="text-center">
- <%= link_to "Fazer busca novamente", filter_path, class: "link ml-4 mt-5" %>
- </div>
+  <div class="main-container">
+    <div class="row">
+      <% @babysitters.each do |babysitter| %>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card-f-nannys">
+          <%= link_to babysitter_path(babysitter) do %>
+            <div class="card-trip">
+            <%= cl_image_tag babysitter.user.photo.key %>
+              <div class="card-trip-infos">
+                <p>Nome: <%=babysitter.user.name%></p>
+                <p>Habilidade: <%=babysitter.skill%></p>
+                <p>Tempo de experiencia: <%=babysitter.experience%></p>
+                <p>Price: <%=number_to_currency(babysitter.price, unit: "R$ ")%></p>
+                <% if babysitter.reviews != [] %>
+                  <% sum = 0 %>
+                  <% babysitter.reviews.each do |review| %>
+                    <% sum += review.rating %>
+                  <% end %>
+                  <div class="d-flex">
+                    <% med_rating = sum / babysitter.reviews.count %>
+                    <% for i in 0...med_rating  %>
+                      <i class="fas fa-star pt-1"></i>
+                    <% end %>
+                    <p>(<%= babysitter.reviews.count %> avaliações)</p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+         </div>
+        </div>
+      <% end %>
+    </div>
+    <div id="map"
+      style="width: 100%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
 
-<div id="map"
-   style="width: 100%; height: 600px;"
-   data-markers="<%= @markers.to_json %>"
-   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="text-center m-4">
+  <%= link_to "Nova Busca", filter_path, class: "btn-filter p-2" %>
 </div>
+

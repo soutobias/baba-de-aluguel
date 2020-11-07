@@ -23,12 +23,12 @@ import flatpickr from "flatpickr";
 // const imagePath = (name) => images(name, true)
 
 document.addEventListener("turbolinks:load", () => {
-  toogleTab2();
-  toogleTab1();
   initMapbox();
   flatpickr(".datepicker", {
     altInput: true,
     altFormat: "F j, Y",
     dateFormat: "Y-m-d",
   });
+  toogleTab2();
+  toogleTab1();
 });

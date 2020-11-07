@@ -1,6 +1,6 @@
 
 <div class="banner_three">
-    <h1 class="title">BABÁ de ALUGUEL</h1>
+    <h1 class="title">BABÁ DE ALUGUEL</h1>
 </div>
 
 <div class="container p-3">
@@ -15,12 +15,13 @@
 
   <div id="my_babysitters">
   <h2>Babás agendadas</h2>
-  <div class="row marging justify-content-between">
+  <div class="row">
     <% @services.each do |service| %>
-      <div class="col-12 col-lg-4">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card-f-nannys">
         <%= link_to babysitter_path(service.babysitter) do %>
           <div class="card-trip">
-            <%= cl_image_tag service.babysitter.user.photo.key %>
+          <%= cl_image_tag service.babysitter.user.photo.key %>
             <div class="card-trip-infos">
               <p>Nome: <%=service.babysitter.user.name%></p>
               <p>Início do Serviço: <%= service.start_date.strftime("%d/%m/%Y") %> </p>
@@ -30,10 +31,10 @@
             </div>
           </div>
         <% end %>
+       </div>
       </div>
     <% end %>
   </div>
-  <%= link_to "Agendar mais serviços", filter_path, class: "btn text-primary"%>
   </div>
   <div id="my_services" class="inactive-tab">
     <% if current_user.babysitter %>

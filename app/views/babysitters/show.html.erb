@@ -5,8 +5,9 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-6 col-sm-12">
-    <div class="card-new-nanny">
+  <div class="col-lg-8 col-sm-12">
+    <div class="card-new-nanny d-flex">
+      <%= cl_image_tag @babysitter.user.photo.key, class: "h-100 photo" %>
       <div class="card-body">
         <h3 class="card-title mb-4">Babysitter</h3>
         <h5 class="nanny-name mb-3">Nome: <%=@babysitter.user.name%></h5>
@@ -25,22 +26,23 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-6 col-sm-12">
-    <div class="card-new-nanny">
-      <div class="card-body">
-        <% if @babysitter.user != current_user %>
-        <div>
-          <h3>Agendamento</h3>
-          <%= simple_form_for [ @babysitter, @service ] do |f| %>
-            <%= f.input :start_date, required: true, input_html: {class: "datepicker"} %>
-            <%= f.input :end_date, required: true, input_html: {class: "datepicker"} %>
-            <%= f.input :duration, label: 'Duração em horas:', collection: [4, 8, 12] %>
-            <%= f.button :submit, label: 'Agendar serviço', class: "btn"%>
-          <% end %>
+
+  <div class="col-lg-4 col-sm-12">
+    <% if @babysitter.user != current_user %>
+      <div class="card-new-nanny">
+        <div class="card-body">
+          <div>
+            <h3>Agendamento</h3>
+            <%= simple_form_for [ @babysitter, @service ] do |f| %>
+              <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+              <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+              <%= f.input :duration, label: 'Duração em horas:', collection: [4, 8, 12] %>
+              <%= f.button :submit, label: 'Agendar serviço', class: "btn"%>
+            <% end %>
+          </div>
         </div>
-      <% end %>
       </div>
-    </div>
+  <% end %>
   </div>
 </div>
 

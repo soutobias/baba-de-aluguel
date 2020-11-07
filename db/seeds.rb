@@ -30,7 +30,7 @@ c = 1
     email: "#{c}@gmail.com",
     name: Faker::Name.name,
     password: '123abc',
-    location: ["Copacabana", "Ipanema", "Leblon, Rio de Janeiro", "Uruguaiana", "Santa Cruz, Rio de Janeiro", "Barra da Tijuca, Rio de Janeiro"].sample,
+    location: ["Copacabana, Rio de Janeiro", "Ipanema, Rio de Janeiro", "Leblon, Rio de Janeiro", "Centro, Rio de Janeiro", "Santa Cruz, Rio de Janeiro", "Barra da Tijuca, Rio de Janeiro"].sample,
     phone: Faker::PhoneNumber.phone_number
   )
   u.photo.attach(io: file, filename: "#{c}.jpg", content_type: 'image/jpg')
