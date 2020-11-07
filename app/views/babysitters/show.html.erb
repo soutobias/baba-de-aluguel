@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row">
   <div class="col-lg-6 col-sm-12">
     <div class="card-new-nanny">
       <div class="card-body">
@@ -12,55 +12,64 @@
         <h5 class="nanny-name mb-3">Nome: <%=@babysitter.user.name%></h5>
         <p>Habilidade: <%=@babysitter.skill%></p>
         <p>Tempo de experiencia: <%=@babysitter.experience%> ano(s)</p>
-        <p>Preço: R$ <%=@babysitter.price%></p>
+        <p>Preço: <%=number_to_currency(@babysitter.price, unit: "R$ ")%></p>
         <p>Local de trabalho: <%=@babysitter.user.location%></p>
         <% if @babysitter.user == current_user %>
+          <div class="editar mb-1 mt-4">
           <%= link_to "Editar meu perfil", edit_babysitter_path(@babysitter), class: "option-one"%>
+          </div>
+          <div class="stop">
           <%= link_to "Parar de oferecer meu serviço", babysitter_path(@babysitter), method: :delete, data: { confirm: "Are you sure?" }, class: "option-two" %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
-    <% if @babysitter.user != current_user %>
-      <div>
-        <h3>Agendamento</h3>
-        <%= simple_form_for [ @babysitter, @service ] do |f| %>
-          <%= f.input :start_date, required: true, input_html: {class: "datepicker"} %>
-          <%= f.input :end_date, required: true, input_html: {class: "datepicker"} %>
-          <%= f.input :duration, label: 'Duração em horas:', collection: [4, 8, 12] %>
-          <%= f.button :submit, label: 'Agendar serviço', class: "btn"%>
-        <% end %>
+  <div class="col-lg-6 col-sm-12">
+    <div class="card-new-nanny">
+      <div class="card-body">
+        <% if @babysitter.user != current_user %>
+        <div>
+          <h3>Agendamento</h3>
+          <%= simple_form_for [ @babysitter, @service ] do |f| %>
+            <%= f.input :start_date, required: true, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, required: true, input_html: {class: "datepicker"} %>
+            <%= f.input :duration, label: 'Duração em horas:', collection: [4, 8, 12] %>
+            <%= f.button :submit, label: 'Agendar serviço', class: "btn"%>
+          <% end %>
+        </div>
+      <% end %>
       </div>
-    <% else %>
-
-    <% end %>
+    </div>
   </div>
 </div>
-<div class="container w-100 justify-content-center margin-top-negative">
-  <div>
-    <div class="m-3">
-      <h2>Avaliações!</h2>
-      <% if !@babysitter.reviews.empty? %>
-        <% @babysitter.reviews.each do |review| %>
+
+<div class="row">
+    <div class="col-12">
+      <div class="card-review">
+        <div class="card-body">
+          <h2>Avaliações!</h2>
+          <% if !@babysitter.reviews.empty? %>
+          <% @babysitter.reviews.each do |review| %>
           <div class='d-flex'>
-            <% for i in 0...review.rating  %>
-              <i class="fas fa-star"></i>
-            <% end %>
+          <% for i in 0...review.rating  %>
+            <i class="fas fa-star"></i>
+          <% end %>
             <p><%= review.description %> </p>
           </div>
-        <% end %>
-      <% else  %>
-        <h4 class="mb-5">Essa babá ainda não possui avaliações</h4>
-      <% end %>
-      <% if @babysitter.user != current_user && @user %>
-        <h3 class="mt-5">O que achou do servico da babá? Deixe seu comentário!</h3>
-        <%= simple_form_for [ @babysitter, @review ] do |f| %>
-          <%= f.input :description %>
-          <%= f.input :rating %>
-          <%= f.submit "Adicione uma Avaliação", class: 'btn text-primary' %>
-        <% end %>
-      <% end %>
+          <% end %>
+          <% else  %>
+          <h4 class="mb-5">Essa babá ainda não possui avaliações</h4>
+          <% end %>
+          <% if @babysitter.user != current_user && @user %>
+          <h3 class="mt-5">O que achou do servico da babá? Deixe seu comentário!</h3>
+            <%= simple_form_for [ @babysitter, @review ] do |f| %>
+              <%= f.input :description %>
+              <%= f.input :rating %>
+              <%= f.submit "Adicione", class: 'btn' %>
+            <% end %>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>

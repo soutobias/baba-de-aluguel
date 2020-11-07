@@ -11,8 +11,8 @@
       <div>
         <%= simple_form_for @babysitter do |f| %>
           <%= f.input :skill, label: 'Habilidade:', collection: %w(cozinhar limpar ensinar brincar) %>
-          <%= f.input :experience, label: 'Tempo de experiência:' %>
-          <%= f.input :price, label: 'Preço por hora:'%>
+          <%= f.input :experience, label: 'Tempo de experiência: (anos)' %>
+          <%= f.input :price, label: 'Preço por hora: (R$/h)'%>
           <%= f.button :submit, "Criar", class: "btn"%>
         <% end %>
       </div>
